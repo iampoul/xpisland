@@ -1,0 +1,11 @@
+package-as: xpisland
+
+# Libraries are patched locally (CallbackHandler, AceGUI Frame widget,
+# AceConfigDialog) to fix Classic Era compatibility issues, so they are kept
+# embedded as-is rather than pulled fresh from externals. Do not add an
+# `externals:` section pointing at upstream Ace3/LibDataBroker/LibDBIcon
+# without re-applying those local fixes.
+
+ignore:
+  - .github
+  - .vscode
