@@ -5,6 +5,28 @@ a full stats panel showing XP/hr, session and level timers, rested XP, total
 played time, and kill/quest XP breakdown. Collapses back down when you move
 away.
 
+## Preview
+
+Collapsed pill:
+
+![Collapsed](docs/images/xp-island-collapsed.PNG)
+
+Hover to expand into the full stats panel:
+
+![Expanded](docs/images/xp-island-expanded.PNG)
+
+Every row in the panel is independently toggleable:
+
+![Information options](docs/images/settings-info.PNG)
+
+Bar appearance (width, scale, transparency, lock, animation):
+
+![Bar options](docs/images/settings-bar.PNG)
+
+Advanced options (minimap icon, quest XP splitting, stat reset):
+
+![Advanced options](docs/images/settings-advanced.PNG)
+
 ## Features
 
 - Draggable, lockable island bar with saved position
