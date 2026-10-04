@@ -27,7 +27,7 @@ local ICON_BACKDROP = {
 local STATUSBAR_TEXTURE = "Interface\\TargetingFrame\\UI-StatusBar"
 
 local COLOR_BG = { 0.0, 0.0, 0.0, 0.92 }
-local COLOR_BORDER = { 1, 1, 1, 1 }
+local COLOR_BORDER = { 0.84, 0.71, 0.29, 1 }
 local COLOR_ICON_BG = { 0.0, 0.0, 0.0, 1 }
 local COLOR_GOLD = { 0.84, 0.71, 0.29 }
 local COLOR_WHITE = { 1, 1, 1 }
@@ -132,6 +132,15 @@ function Bar:Create()
 	fill:SetPoint("TOPLEFT", track, "TOPLEFT", 2, -2)
 	fill:SetPoint("BOTTOMLEFT", track, "BOTTOMLEFT", 2, 2)
 	frame.fillTex = fill
+
+	-- Thin highlight line along the top of the track for a bit of shine,
+	-- same trick Blizzard uses on action button glows.
+	local sheen = track:CreateTexture(nil, "ARTWORK", nil, 2)
+	sheen:SetColorTexture(1, 1, 1, 0.18)
+	sheen:SetPoint("TOPLEFT", track, "TOPLEFT", 2, -2)
+	sheen:SetPoint("TOPRIGHT", track, "TOPRIGHT", -2, -2)
+	sheen:SetHeight(2)
+	frame.sheen = sheen
 
 	frame:SetScript("OnEnter", function() addon:OnEnter() end)
 	frame:SetScript("OnLeave", function() addon:OnLeave() end)

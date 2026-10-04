@@ -22,7 +22,7 @@ local BACKDROP = {
 }
 
 local COLOR_BG = { 0.0, 0.0, 0.0, 0.95 }
-local COLOR_BORDER = { 1, 1, 1, 1 }
+local COLOR_BORDER = { 0.84, 0.71, 0.29, 1 }
 local COLOR_GOLD = { 0.84, 0.71, 0.29 }
 local COLOR_WHITE = { 1, 1, 1 }
 local COLOR_RESTED = { 0.4, 0.68, 0.95 }
@@ -111,6 +111,15 @@ function Panel:Create()
 	self.rows = {}
 	self.visibleRows = 0
 
+	-- Faint vertical dividers between columns, purely decorative.
+	self.dividers = {}
+	for i = 1, COLS - 1 do
+		local divider = frame:CreateTexture(nil, "ARTWORK")
+		divider:SetColorTexture(1, 1, 1, 0.08)
+		divider:SetWidth(1)
+		self.dividers[i] = divider
+	end
+
 	self:ApplySettings()
 end
 
@@ -153,6 +162,28 @@ function Panel:LayoutRows()
 			row.value:SetTextColor(unpack(row.def.color))
 		else
 			row.value:SetTextColor(unpack(COLOR_WHITE))
+		end
+	end
+
+	-- Dividers sit halfway through each gutter, spanning from just below the
+	-- top margin to just above the bottom margin.
+	local lines = math.max(1, math.ceil(self.visibleRows / COLS))
+	local gridHeight = lines * CELL_HEIGHT + (lines - 1) * ROW_GAP
+
+	for i = 1, COLS - 1 do
+		local divider = self.dividers[i]
+		local x = PADDING + i * colWidth + (i - 1) * COL_GUTTER + COL_GUTTER / 2
+
+		divider:ClearAllPoints()
+		divider:SetPoint("TOPLEFT", frame, "TOPLEFT", x, -(TOP_OFFSET - 4))
+		divider:SetHeight(gridHeight + 4)
+
+		-- Only show a divider if at least one visible row actually has a
+		-- cell to its right (avoids a stray line past a short last row).
+		if self.visibleRows > i then
+			divider:Show()
+		else
+			divider:Hide()
 		end
 	end
 end

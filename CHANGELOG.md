@@ -2,7 +2,18 @@
 
 All notable changes to this project are documented here.
 
-## 1.0.0 — Unreleased
+## 1.1.0
+
+### Changed
+- Gold-tinted borders on the pill and stats panel (replacing plain white
+  tooltip borders) for a more cohesive, native look.
+- Added a subtle sheen highlight along the top of the progress bar.
+- Added faint vertical divider lines between stat columns in the expanded
+  panel.
+- Added CurseForge project metadata (`X-Curse-Project-ID`) for automated
+  releases.
+
+## 1.0.0
 
 ### Added
 - Draggable, lockable XP island bar with saved position.

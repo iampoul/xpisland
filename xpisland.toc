@@ -3,7 +3,7 @@
 ## Notes: A draggable XP island that expands on hover to show XP/hr, timers, rested XP and played time.
 ## Notes-deDE: Eine ziehbare XP-Insel, die beim Hovern Details zu XP/h, Timern, Rast-XP und Spielzeit zeigt.
 ## Author: XPIsland
-## Version: 1.0.0
+## Version: 1.1.0
 ## SavedVariables: xpislandDB
 ## OptionalDeps: Ace3, LibDataBroker-1.1, LibDBIcon-1.0
 ## X-Category: Utility Bars
